@@ -8,6 +8,7 @@ Read README.md, PRODUCT.md, ARCHITECTURE.md, MODULE_STANDARD.md, and ENGINEERING
 - Preserve accessible navigation, mobile layouts, light/dark themes, and clear unfinished-feature labels.
 - Validate engineering models, units, assumptions, and numerical tolerances with independent expected results.
 - Run npm test, npm run typecheck, npm run build, and npm run format:check for relevant changes. Report failures honestly and explain user-visible limitations.
+- For dependency changes, also run npm run audit, inspect the lockfile diff, and verify a clean npm ci. Resolve moderate-or-higher audit findings before merging; do not use npm audit fix --force without reviewing the proposed dependency changes.
 - Use a feature branch and prepare a pull request against main when supported. Do not merge directly into main.
 - Never commit credentials, generated builds, or node_modules. Explain setup and delivery in beginner-friendly language.
 

@@ -1,36 +1,51 @@
 # PowerLab — Project Status
 
 **Updated:** 2026-10-23
-**Status scope:** Repository facts checked against `main` on this date. This status document is proposed in a documentation pull request and does not imply Task 002 is complete.
+**Status scope:** The merged foundation and product-context documentation, plus the maintenance verification recorded below. GitHub PR states and check results remain authoritative for integration and CI status.
 
 ## Current phase
-**Foundation established; project context consolidation / AI-assisted management workflow pending.**
 
-## Verified from GitHub
-- Pull request [#1 — Build PowerLab modular application foundation](https://github.com/TVestly/powerlab/pull/1) was merged into `main` on 2026-10-23.
-- `main` contains the React/TypeScript/Vite project, application dashboard/navigation, a theme toggle, and four *preview* modules: Three-Phase Systems, Transformers, Transmission Lines, Electric Machines.
-- The repository contains architectural/product/module/mathematical standards documentation and basic UI tests and a GitHub Actions checks workflow.
-- The code and test files were inspected through GitHub; **the app was not run and tests were not independently executed as part of this documentation review**.
+**Foundation and durable product context established; maintenance verified; feature development paused.** Task 002 (AI-assisted project tracking) remains pending.
 
-## Available to the student (implemented in code, runtime not independently tested here)
-- Navigate dashboard and module directory; visit placeholder topic pages.
+## Integrated work
+
+- [PR #1 — Build PowerLab modular application foundation](https://github.com/TVestly/powerlab/pull/1) merged on 2026-10-23.
+- [PR #2 — Document PowerLab vision and verified project status](https://github.com/TVestly/powerlab/pull/2) merged on 2026-10-23. The context/status files and agent handoff instructions are now in the repository; this did not complete Task 002.
+- The application contains the React/TypeScript/Vite foundation, dashboard/navigation, a theme toggle, and four **preview** modules: Three-Phase Systems, Transformers, Transmission Lines, Electric Machines.
+- Product, architecture, module, and engineering standards are documented. Automated UI/storage tests and a GitHub Actions checks workflow are present.
+
+## Maintenance and verification — 2026-10-23
+
+- Corrected formatting in the context/status documentation that caused the post-PR #2 checks to fail. Removed obsolete instructions to merge the already-merged documentation PR.
+- Updated Vitest from 3.2.7 to 4.1.12 and regenerated the npm lockfile. The three audit findings were in development/test tooling; the update removes the vulnerable Tinypool dependency and updates the mocker package. Application source and production dependency versions are unchanged.
+- Added `npm run audit` to GitHub checks, failing on known moderate-or-higher vulnerabilities in all dependencies, including development tools.
+- Updated checkout/setup-node actions to their Node.js 24-based v5 releases and explicitly limited workflow permissions to reading repository contents.
+- Local verification on Node.js 24: clean `npm ci --no-audit` installation; **6 tests passed in 2 files**; type checking and production build passed. The separate `npm run audit` reported **0 vulnerabilities**.
+- `npm run format:check` passed. See [GitHub Actions](https://github.com/TVestly/powerlab/actions/workflows/checks.yml) for the check results attached to each branch, PR, and merged commit.
+- The UI tests use a simulated browser environment. A manual visual/browser acceptance review and public deployment have **not** been performed in this maintenance pass. An audit result reflects known advisories at the time it runs, not a permanent security guarantee.
+
+## Available to the student
+
+- Navigate the dashboard and module directory; visit placeholder topic pages.
 - Toggle between light/dark themes with browser preference persistence.
-- Read clear notices that actual engineering calculators, simulations and exercises are not yet implemented.
+- Read clear notices that actual engineering calculators, simulations, and exercises are not yet implemented.
+- Run the application locally using the steps in [README.md](README.md).
 
-## Missing or not yet confirmed
-- No real numerical engineering solvers, conductor designer, phasor activity, or interactive circuit simulations.
-- No project save/load functionality beyond theme preference.
-- No verified public browser preview/deployment for the project owner.
-- No AI-maintained roadmap / GitHub Issues backlog / status automation as of this review.
-- No independent runtime test confirmation within this review.
+## Still missing
 
-## Immediate priority
-1. **Review and merge the proposed project-context documentation PR**; this preserves the agreed product direction before new planning chats or Codex tasks.
-2. **When development resumes: Task 002, AI-assisted project tracking**. Create a prioritized `ROADMAP.md`, small GitHub Issues backlog, and an easy-to-read maintenance workflow. Have agents update status only after inspecting actual merged work.
-3. Next functional priority after management setup: simple browser preview and user inspection of the current application, then a narrow first real educational activity.
+- Numerical engineering solvers, conductor designer, phasor activity, and interactive circuit simulations.
+- Project save/load functionality beyond theme preference.
+- A verified public browser preview/deployment for the project owner.
+- The Task 002 roadmap, GitHub Issues backlog, and status automation.
+
+## Work paused here
+
+This maintenance pass does not start Task 002 or add application features. When the owner resumes development, the previously agreed sequence is project tracking, an easy browser preview/user inspection, then a narrow first educational activity. The scope of each task still needs owner approval.
 
 ## Decision rules
-- For current functionality, trust merged code, CI evidence and visual previews over planned features.
-- For lasting product intent, use `PROJECT_CONTEXT.md`, `PRODUCT.md`, and the specific architecture/engineering documents.
+
+- Trust merged code, CI evidence, and visual previews over planned features when reporting current functionality.
+- Use `PROJECT_CONTEXT.md`, `PRODUCT.md`, and the specific architecture/engineering documents for lasting product intent.
 - Work on feature branches with reviewable pull requests; the owner decides when to merge.
-- This file is a short digest, **not** the full task backlog. GitHub Issues and the planned `ROADMAP.md` will handle detailed scheduling.
+- Keep status claims tied to checks that actually ran. Consult current GitHub results before saying the latest `main` passes.
+- This file is a short digest, **not** the full task backlog.
