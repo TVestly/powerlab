@@ -13,7 +13,8 @@ This document preserves significant product and workflow decisions from initial 
 A particular university course may provide examples, teaching material, or validation exercises, but must never define PowerLab's core architecture or naming. The platform should eventually accommodate three-phase circuits, transformers, electrical machines, transmission lines, power-system networks, electromagnetics, power electronics, control systems, and other topics.
 
 PowerLab should:
-- Help students understand *why* electrical systems behave as they do, by linking equations, physical meaning, and visual behavior.
+
+- Help students understand _why_ electrical systems behave as they do, by linking equations, physical meaning, and visual behavior.
 - Make interactive exploration immediately accessible to a student who did not create the software.
 - Deliver accurate, testable, transparent calculations with explicit quantities, assumptions, units, and sign conventions.
 - Use a clean, restrained, consistent, high-quality UI in which the learning visualization takes priority.
@@ -29,6 +30,7 @@ Success is not measured by the number of calculators on the dashboard. It is mea
 Primary users are undergraduate electrical engineering students, including beginners. Secondary users are advanced students exploring relationships and small systems.
 
 Each interactive learning activity should, where appropriate:
+
 1. Open with a meaningful working example, never an unexplained empty canvas.
 2. Present a **large central visualization** (circuit, phasor, waveform, conductor geometry, graph, or network).
 3. Provide clearly labeled inputs with physical units, ranges, defaults, and explanations.
@@ -38,6 +40,7 @@ Each interactive learning activity should, where appropriate:
 7. Allow an example/configuration to be saved, restored, and later shared/exported.
 
 Three **planned interaction modes** should share the same underlying model:
+
 - **Learn:** guided walkthrough, highlights, explanations, and examples.
 - **Explore:** unrestricted, validated adjustment of supported physical parameters, with immediate feedback.
 - **Practice:** exercises with answers hidden until requested, hints, and inspectable worked solutions.
@@ -47,6 +50,7 @@ These modes are a product direction, not necessarily required for the very first
 ## 3. User experience and visual design
 
 Preferred desktop-style workspace:
+
 - Left: consistent topic/module navigation.
 - Center: dominant, zoomable interactive visualization.
 - Right: compact input parameters and calculated quantities.
@@ -54,6 +58,7 @@ Preferred desktop-style workspace:
 - Universally accessible: electrical/math calculator or converter without abandoning the current activity.
 
 Design guidelines:
+
 - Professional, minimalist, spacious, readable, no clutter or unnecessary decoration.
 - Responsive browser interface with light and dark appearance; keyboard and screen-reader accessibility.
 - Distinguish physical geometry from schematic diagrams and numerical plots; each may use a specialized renderer while sharing design tokens and interaction conventions.
@@ -72,13 +77,14 @@ A module should define as applicable: stable ID, title/category, default example
 
 Do **not** force every topic into one generic power-system circuit/network model. Allow specialized domains, e.g. conductor cross-sections, motor torque curves, waveforms, transformer equivalent circuits, and network topology.
 
-Initially, modules may be registered in application source code. A third-party executable plugin system or plugin marketplace is *not* a phase-one requirement.
+Initially, modules may be registered in application source code. A third-party executable plugin system or plugin marketplace is _not_ a phase-one requirement.
 
 ### Cross-module data and projects (planned)
 
 A key differentiator is the ability to move from **conductor geometry → line parameters → transmission model → network analysis**, using well-defined typed data rather than manual copying.
 
 Future study projects should store inputs and relevant configuration metadata using an explicitly versioned format. Connected values should support both:
+
 - **Live links:** updates propagate through compatible models.
 - **Snapshots:** retain a fixed value/configuration for comparison and reproducibility.
 
@@ -89,12 +95,14 @@ Distinguish user-entered values, derived values, and external/linked values. Sha
 The following are **planned capability families**, not finished modules. Scope and sequence depend on foundation quality.
 
 ### A. Three-phase and phasor visualization
+
 - Polar/rectangular phasors, magnitudes/angles, phase references, dynamic waveforms.
 - Balanced three-phase Y/Δ connections, line vs phase quantities, 30-degree shifts, complex power, power factor; unbalanced systems later.
 - Linked circuit diagram, waveform, phasor view, and inspectable equations.
 - Avoid conflating line-to-line and line-to-neutral reference phasors.
 
 ### B. Conductor and transmission-line geometry
+
 - Interactive moveable phase conductors in horizontal, vertical, triangular, and custom arrangements.
 - Radius/diameter, physical distances `D_AB`, `D_BC`, `D_CA`; GMD/GMR and phase transposition assumptions.
 - Bundled conductor count and spacing; correctly distinguish physical radius, GMR, effective bundle radii for inductance/capacitance.
@@ -102,21 +110,25 @@ The following are **planned capability families**, not finished modules. Scope a
 - Alternative geometry, magnetic field, electric field, and equivalent-model views where technically appropriate.
 
 ### C. Transformers
+
 - Ideal/practical transformer relationships, winding ratio and impedance referral, equivalent circuit.
 - Open/short-circuit tests; losses, efficiency, voltage regulation, three-phase connections and vector groups.
 - Saturation, magnetization and inrush visualization with an explicitly specified transient model.
 
 ### D. Transmission and power networks
+
 - Short/medium/long line representations, nominal pi, ABCD quantities, phasors, power transfer, voltage profiles and losses.
 - Future editor with buses, generators, loads, transformers, and lines; Y-bus and load-flow methods including instructional iteration views.
 - Fault calculations and symmetrical components with valid model/sequence-network assumptions.
 
 ### E. Electrical machines and further electrical engineering
+
 - Torque-speed explorer, induction and synchronous machines, rotating field, electrical/mechanical power relationships.
 - Later: power electronics, circuits, electromagnetics, control systems and other independent domains.
 - Early architectural expansion test: add a small machine-related activity without restructuring existing modules.
 
 ### F. Universal engineering toolbox
+
 - Complex arithmetic, polar/rectangular, degrees/radians, SI prefixes, unit conversions.
 - Electrical-specific conversions: line/phase, impedance/admittance, Y/Δ, per-unit (explicit power/voltage bases).
 - Contextual formula inspection and the ability to copy a useful result into an activity.
@@ -124,6 +136,7 @@ The following are **planned capability families**, not finished modules. Scope a
 ## 6. Engineering trust and safety requirements
 
 Treat `ENGINEERING_STANDARDS.md` as the primary home for mathematical conventions. In particular:
+
 - SI internally; label displayed units and magnitude semantics.
 - Distinguish phasor vs scalar, RMS vs peak, V_LL vs V_LN, phase vs line current, source vs load sign conventions.
 - Specify angle reference, phase sequence, leading/lagging, power flow direction, and per-unit bases when relevant.
@@ -135,6 +148,7 @@ Treat `ENGINEERING_STANDARDS.md` as the primary home for mathematical convention
 ## 7. Confirmed platform and workflow decisions
 
 **Confirmed product choices:**
+
 - Browser-first; possible Windows/macOS desktop package later, without redesigning the frontend.
 - No mandatory account/cloud backend for the initial educational application.
 - Extensibility and course-independence are core product principles.
@@ -166,6 +180,7 @@ The precise backlog belongs in GitHub Issues and later `ROADMAP.md`; this list r
 The owner makes product decisions and approves results rather than coding.
 
 For each substantial change:
+
 1. ChatGPT (or a designated Work task) reviews current **main**, recent PRs/issues and canonical docs; proposes the next smallest high-value task and explains it.
 2. Codex reads `AGENTS.md` and related specifications, implements on a separate branch, tests, and opens a PR.
 3. Codex describes user-visible outcome, tested evidence, limitations, and how a non-programmer can preview/validate it; updates docs when needed.
@@ -188,4 +203,4 @@ A fresh ChatGPT or Codex conversation is **not guaranteed to have the entire his
 - A full project tracking board and automated governance workflow are planned but not yet established.
 - Timing/scope of the Learn/Explore/Practice modes needs incremental validation with real users.
 
-When uncertain, treat ideas as *proposals* and ask the owner for decisions only when the ambiguity blocks meaningful progress.
+When uncertain, treat ideas as _proposals_ and ask the owner for decisions only when the ambiguity blocks meaningful progress.

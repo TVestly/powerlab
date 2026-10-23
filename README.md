@@ -20,6 +20,9 @@ No account, API key, database, or backend is required. To reopen the application
 - `npm run build`: type checking and production build into `dist/`.
 - `npm run preview`: serve the built version locally.
 - `npm run format:check`: check formatting; `npm run format` applies formatting.
+- `npm run audit`: check all dependencies, including development tools, for known vulnerabilities; moderate or higher findings fail the check.
+
+GitHub Actions runs formatting, type checking, tests, the production build, and the dependency audit on pushes and pull requests. Review any failures before merging. A passing audit is a point-in-time check of known advisories, not a guarantee that software has no vulnerabilities.
 
 ## Project map
 
