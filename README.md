@@ -2,6 +2,12 @@
 
 An extensible electrical engineering learning workspace for university students. PowerLab is independent of any university course. This foundation release includes a dashboard, module directory, four topic previews, responsive navigation, and persistent light/dark themes. Calculators and simulations are not implemented yet.
 
+## Start a new conversation or task
+
+Point ChatGPT or Codex to `TVestly/powerlab` and ask it to follow [AGENTS.md](AGENTS.md). [PROJECT_WORKFLOW.md](PROJECT_WORKFLOW.md) provides the reading guide, task process, and copyable prompts. [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) preserves approved product direction; [PROJECT_STATUS.md](PROJECT_STATUS.md) records verified progress; [ROADMAP.md](ROADMAP.md) links the prioritized tasks.
+
+The owner's [overview in Issue #4](https://github.com/TVestly/powerlab/issues/4) is a quick entry point. Check current `main`, issues, and PRs before choosing work. A roadmap entry does not start implementation; the owner selects the task and approves its scope.
+
 ## Open the application
 
 1. Install **Node.js 24 LTS**, which includes npm.
