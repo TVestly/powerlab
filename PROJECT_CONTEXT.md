@@ -156,6 +156,7 @@ Treat `ENGINEERING_STANDARDS.md` as the primary home for mathematical convention
 - Extensibility and course-independence are core product principles.
 - Codex is primary implementation agent; Claude Code is an optional independent reviewer for major work; ChatGPT helps with product planning, task writing and repository review.
 - GitHub repository is the canonical record of accepted code and approved product decisions.
+- [Task 003 / Issue #6](https://github.com/TVestly/powerlab/issues/6), approved 2026-10-24, selects free Cloudflare Pages with GitHub integration: accepted `main` in production and separate PR previews before merge. This selects the host; deployment completion is tracked in `PROJECT_STATUS.md`.
 - The owner has limited coding experience: tasks and reviews must be expressed in accessible language.
 
 **Current implemented foundation (see status and code for verification):**
@@ -200,7 +201,7 @@ A fresh ChatGPT or Codex conversation is **not guaranteed to have the entire his
 
 - Precise aesthetics and visual component designs require hands-on review of prototypes.
 - The final project serialization schema and live-link behavior are not implemented.
-- Browser deployment provider, advanced solver backend, and offline packaging are not selected.
+- Browser hosting is selected under Task 003 (Cloudflare Pages); setup and verification remain tracked in Issue #6. Advanced solver backend and offline packaging are not selected.
 - Cloud sync, accounts, collaborative editing, third-party plugins and built-in generative AI tutor are out of initial scope.
 - A project tracking board and automated governance workflow were earlier planning ideas. Task 002 establishes a manual Issues/PR/document workflow; a board and background automation are outside its approved scope. Any future proposal requires separate approval.
 - Timing/scope of the Learn/Explore/Practice modes needs incremental validation with real users.
