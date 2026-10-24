@@ -6,6 +6,8 @@
 
 This document preserves significant product and workflow decisions from initial planning. It complements `PRODUCT.md`, `ARCHITECTURE.md`, `MODULE_STANDARD.md`, and `ENGINEERING_STANDARDS.md`. The actual source code and tests determine what is implemented; `PROJECT_STATUS.md` summarizes the verified/current state. Proposed features below are a direction, **not completed functionality**.
 
+For the practical reading guide and task process, see [PROJECT_WORKFLOW.md](PROJECT_WORKFLOW.md); for current priorities and issue links, see [ROADMAP.md](ROADMAP.md). Task 002 adds these navigation links and clarifies workflow scope without changing the product vision below.
+
 ## 1. Core identity and non-negotiable principles
 
 **PowerLab is a general, expandable interactive learning platform for electrical engineering students. It is not an ELK220 application, a single-course calculator collection, or a professional certified engineering design tool.**
@@ -71,7 +73,7 @@ Design guidelines:
 
 **Architectural direction:** web-first modular monolith. Shared platform capabilities are separate from domain models, independent educational activities, and rendering.
 
-The application core supplies navigation, module discovery/registration, design system, validation helpers, units/quantities, plotting/diagram infrastructure, explanation patterns, project storage, and cross-module orchestration.
+The intended application core supplies navigation, module discovery/registration, design system, validation helpers, units/quantities, plotting/diagram infrastructure, explanation patterns, project storage, and cross-module orchestration. Only the foundation described in `ARCHITECTURE.md` and `PROJECT_STATUS.md` is implemented today; this list describes the architectural direction.
 
 A module should define as applicable: stable ID, title/category, default examples, input/output quantity definitions, validated domain calculations, one or more views, learner-facing explanations, assumptions, tests, and optional data connections. No module should have to duplicate navigation or invent its own unit standard.
 
@@ -173,7 +175,7 @@ Avoid introducing an overly abstract plugin framework, server infrastructure, Py
 6. Add a limited motor/machines activity as a deliberate **expandability test**.
 7. Broaden into transformer, transmission, network and other topics in small, independently reviewable increments.
 
-The precise backlog belongs in GitHub Issues and later `ROADMAP.md`; this list records intended direction only.
+The precise backlog belongs in GitHub Issues and [ROADMAP.md](ROADMAP.md); this list records intended direction only. The roadmap maps this sequence to task numbers, including a separate owner interface review before the first phasor activity.
 
 ## 9. Operating model for AI-assisted development
 
@@ -200,7 +202,7 @@ A fresh ChatGPT or Codex conversation is **not guaranteed to have the entire his
 - The final project serialization schema and live-link behavior are not implemented.
 - Browser deployment provider, advanced solver backend, and offline packaging are not selected.
 - Cloud sync, accounts, collaborative editing, third-party plugins and built-in generative AI tutor are out of initial scope.
-- A full project tracking board and automated governance workflow are planned but not yet established.
+- A project tracking board and automated governance workflow were earlier planning ideas. Task 002 establishes a manual Issues/PR/document workflow; a board and background automation are outside its approved scope. Any future proposal requires separate approval.
 - Timing/scope of the Learn/Explore/Practice modes needs incremental validation with real users.
 
 When uncertain, treat ideas as _proposals_ and ask the owner for decisions only when the ambiguity blocks meaningful progress.
