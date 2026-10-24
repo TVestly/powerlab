@@ -5,7 +5,7 @@
 
 ## Current phase
 
-**Foundation and durable product context established; maintenance merged.** Task 002 is in progress for review. No further application development has started. See [ROADMAP.md](ROADMAP.md) for priorities and [PROJECT_WORKFLOW.md](PROJECT_WORKFLOW.md) for the task process proposed in this branch.
+**Foundation and durable product context established; maintenance merged.** Task 002 is in review in [PR #11](https://github.com/TVestly/powerlab/pull/11). No further application development has started. See [ROADMAP.md](ROADMAP.md) for priorities and [PROJECT_WORKFLOW.md](PROJECT_WORKFLOW.md) for the task process proposed in this branch.
 
 ## Integrated work
 
@@ -29,7 +29,7 @@
 
 [Issue #5](https://github.com/TVestly/powerlab/issues/5) authorizes the documentation/workflow task on `docs/task-002-project-workflow`. Proposed changes add the roadmap, context recovery guide, reusable prompts, and lightweight issue/PR templates; update the reading and handoff rules; and clarify obsolete board/automation expectations. Product vision, application behavior, dependencies, and existing CI remain unchanged.
 
-The current backlog is tracked in Issues #5–#10; [Issue #4](https://github.com/TVestly/powerlab/issues/4) is the owner's open overview. This branch must be reviewed and merged before Task 002 is described as integrated. Its final acceptance also requires an accurate owner overview with authoritative document links. See the delivery PR for current validation and any pending GitHub updates; after acceptance, reconcile this snapshot against the merged commit using `PROJECT_WORKFLOW.md`.
+The current backlog is tracked in Issues #5–#10; [Issue #4](https://github.com/TVestly/powerlab/issues/4) is the owner's open overview. This branch must be reviewed and merged before Task 002 is described as integrated. Its final acceptance also requires an accurate owner overview with authoritative document links. See [PR #11](https://github.com/TVestly/powerlab/pull/11) for current validation and any pending GitHub updates; after acceptance, reconcile this snapshot against the merged commit using `PROJECT_WORKFLOW.md`.
 
 Local validation on 2026-10-24 with Node.js 24: `npm test` passed **6 tests in 2 files**; `npm run typecheck`, `npm run build`, and `npm run format:check` passed; `npm run audit -- --cache /workspace/.npm` found **0 vulnerabilities**. Documentation review checked the reading path, task/issue mappings, and proposed-versus-merged claims against the inspected repository and GitHub pages. No manual browser acceptance review or deployment was performed for this documentation task. Consult the PR for GitHub CI results.
 
