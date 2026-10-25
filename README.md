@@ -10,18 +10,20 @@ The owner's [overview in Issue #4](https://github.com/TVestly/powerlab/issues/4)
 
 ## Open the application
 
-**Hosting status (2026-10-24): setup is blocked on the owner's Cloudflare account connection.** [Task 003 / Issue #6](https://github.com/TVestly/powerlab/issues/6) approves free Cloudflare Pages hosting with Git-connected PR previews. This branch proposes the instructions and hosting regression tests; it does not establish a live website. No production or PR-preview URL has been verified. [PROJECT_STATUS.md](PROJECT_STATUS.md) records the evidence and outstanding work.
+**Open PowerLab:** [https://powerlab-auj.pages.dev](https://powerlab-auj.pages.dev). The owner confirmed the Cloudflare Pages Git connection and successful production deployment on **2026-10-25**. Cloudflare's [successful deployment check](https://github.com/TVestly/powerlab/runs/121107807625) identifies accepted `main` commit `44d9bdf8c588e12c35b9af0b84521475af8729c6`. This is the accepted application, not the unmerged [PR #13](https://github.com/TVestly/powerlab/pull/13) branch.
 
-Once configured, two kinds of link will be available:
+The two kinds of link serve different purposes:
 
-| Website    | What you are testing                                   | Verified link                                                              |
-| ---------- | ------------------------------------------------------ | -------------------------------------------------------------------------- |
-| Production | Latest successfully deployed, accepted `main` commit   | Pending owner setup and verification                                       |
-| PR preview | Proposed changes from that PR's branch, before merging | Pending owner setup and verification; find it in the PR's Cloudflare check |
+| Website    | What you are testing                                   | Verified link                                                                                                                                                    |
+| ---------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Production | Latest successfully deployed, accepted `main` commit   | [powerlab-auj.pages.dev](https://powerlab-auj.pages.dev) — owner confirmed; successful Cloudflare check linked above                                             |
+| PR preview | Proposed changes from that PR's branch, before merging | Open [PR #13's Cloudflare check](https://github.com/TVestly/powerlab/pull/13/checks) for the deployment-specific URL and commit after this branch update deploys |
 
-Visitors will only need a browser. The owner needs Cloudflare and GitHub accounts for the one-time setup below. A production link cannot demonstrate unmerged changes.
+Visitors only need a browser. Production deployment evidence is separate from browser acceptance testing: this implementation environment cannot access `pages.dev` because of its outbound network policy, so it has not independently tested the hosted UI. [PROJECT_STATUS.md](PROJECT_STATUS.md) records the evidence and remaining review. A production link cannot demonstrate unmerged changes.
 
 ### One-time Cloudflare Pages setup (owner)
+
+**Already connected:** the owner has completed setup for this repository. The existing Pages project is `powerlab`, with production address `powerlab-auj.pages.dev`. Keep the steps below as a setup/settings reference; do not create a duplicate project. The settings table describes the repository's required configuration, not an independent inspection of every dashboard setting.
 
 1. Sign in to the [Cloudflare dashboard](https://dash.cloudflare.com/). Use the free plan and go to **Workers & Pages → Create application → Pages → Connect to Git** (also called **Import an existing Git repository**). Choose the Pages Git integration, not Direct Upload or a Workers application.
 2. Select GitHub and authorize the **Cloudflare Workers & Pages** GitHub app for **only `TVestly/powerlab`**. This allows Cloudflare to read the source, receive updates, and publish deployment checks/preview links. Review the permission screen in GitHub; repository/account authorization must be performed by the owner. Never paste passwords or tokens into chat or commit them to this repository.
@@ -41,13 +43,13 @@ Visitors will only need a browser. The owner needs Cloudflare and GitHub account
 5. Open the successful production deployment's link in a signed-out/private browser window. Copy the actual URL and its Git commit from the deployment details into the Task 003 PR and status record after checking them. Initial production publishes existing accepted `main`; it does not publish this branch.
 6. Open the Task 003 PR linked from [Issue #6](https://github.com/TVestly/powerlab/issues/6). Find its Cloudflare deployment check and open **Details / View deployment**. If the integration was connected after this branch was pushed and no preview exists, verify branch controls first; retry a listed preview deployment, or ask the implementer to push the next Task 003 update to the same branch. Do not merge just to obtain a preview.
 
-Cloudflare account setup is not possible with the current session's available connections. If a project already exists, use its settings instead of creating a duplicate and share only its public URL. If Pages Git integration cannot be enabled, report the blocker in Issue #6; changing host or buying a plan needs a separate owner decision.
+Cloudflare account setup is no longer the blocker. This documentation update is pushed to `chore/task-003-cloudflare-pages` to trigger a PR preview through the existing integration; production continues to use `main`. If no preview appears, open the existing project's **Settings → Builds / Builds & deployments → Branch control**, confirm preview branches are enabled, and inspect the PR's Cloudflare check. No account credentials are needed in chat or this repository. Changing host or buying a plan needs a separate owner decision.
 
 Official references: [Git setup](https://developers.cloudflare.com/pages/get-started/git-integration/), [GitHub permissions and PR checks](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/), [React build settings](https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-site/), [Node version selection](https://developers.cloudflare.com/pages/configuration/build-image/), and [branch deployment controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/).
 
 ### Find a preview and check its commit
 
-Open the PR's Cloudflare check, then the successful **Preview** deployment for that PR branch. Compare the deployment's Git commit with the latest commit on the PR's **Commits** tab. Record the full SHA (Git's commit identifier), deployment URL, environment, and test date in the PR. Cloudflare also lists deployments under **Workers & Pages → your project → Deployments**.
+Open [PR #13's Cloudflare check](https://github.com/TVestly/powerlab/pull/13/checks), then the successful **Preview** deployment for `chore/task-003-cloudflare-pages`. Compare the deployment's Git commit with the latest commit on the PR's **Commits** tab. Record the full SHA (Git's commit identifier), deployment URL, environment, and test date in the PR. Cloudflare also lists deployments under **Workers & Pages → powerlab → Deployments**. The current preview URL and SHA belong in the PR so later pushes can be traced without confusing an older deployment with the newest branch version.
 
 Prefer the deployment-specific URL for review evidence. A branch alias moves as new commits deploy, and the random prefix in a deployment URL is not the Git SHA. Check deployment details to identify the source. Production has its own project address and must report branch `main` and the accepted commit. If a newer build fails, the previous successful deployment may still be served. A green GitHub Actions check does not prove Cloudflare deployed, and a successful Cloudflare build does not prove all GitHub checks passed.
 
@@ -74,7 +76,7 @@ After an owner-approved merge, repeat this test on the production URL and compar
 
 ### Local fallback for this PR
 
-This requires Git, Node.js 24 LTS, and a terminal; it is a fallback for a developer while Cloudflare setup is blocked, **not** satisfaction of the no-install browser acceptance criterion. In a new folder, run:
+This requires Git, Node.js 24 LTS, and a terminal; it is a fallback if a PR preview is unavailable, **not** satisfaction of the no-install browser acceptance criterion. In a new folder, run:
 
 ```sh
 git clone --branch chore/task-003-cloudflare-pages --single-branch https://github.com/TVestly/powerlab.git powerlab-task-003
