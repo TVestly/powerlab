@@ -1,11 +1,11 @@
 # PowerLab — Project Status
 
 **Updated:** 2026-10-25
-**Verified main baseline:** [`44d9bdf`](https://github.com/TVestly/powerlab/commit/44d9bdf8c588e12c35b9af0b84521475af8729c6) (merge of PR #12). GitHub PR states and check results remain authoritative for integration and CI status. Cloudflare has successfully deployed this accepted main commit. Task 003 documentation and regression tests remain proposed in unmerged [PR #13](https://github.com/TVestly/powerlab/pull/13) on `chore/task-003-cloudflare-pages`.
+**Verified main baseline:** [`3a4374b`](https://github.com/TVestly/powerlab/commit/3a4374b32dad5eec395a1fb35868f3fd064d48a2) (merge of PR #13). GitHub confirms the merge, successful CI, and a successful Cloudflare deployment of this exact commit. Deployment success and hosted browser acceptance are separate evidence.
 
 ## Current phase
 
-**Foundation, durable project context, and the Task 002 development workflow are established on main.** PRs #11 and #12 are merged. Task 003 now has a production deployment; account setup is complete. PR-preview verification, owner review, and separate post-merge production verification remain outstanding. Later tasks have not started. See [ROADMAP.md](ROADMAP.md) for priorities and [PROJECT_WORKFLOW.md](PROJECT_WORKFLOW.md) for the accepted task process.
+**Foundation, project workflow, and Task 003's hosting documentation and regression tests are integrated on main.** Cloudflare production and PR deployments are configured. Task 003's remaining acceptance evidence is tracked in [Issue #6](https://github.com/TVestly/powerlab/issues/6); a merged PR does not substitute for the required hosted browser checks. Later tasks have not started. See [ROADMAP.md](ROADMAP.md) and [PROJECT_WORKFLOW.md](PROJECT_WORKFLOW.md).
 
 ## Integrated work
 
@@ -13,7 +13,8 @@
 - [PR #2 — Document PowerLab vision and verified project status](https://github.com/TVestly/powerlab/pull/2) merged on 2026-10-23. The context/status files and agent handoff instructions are now in the repository; this did not complete Task 002.
 - [PR #3 — Fix failing checks, update test dependencies, and reconcile project status](https://github.com/TVestly/powerlab/pull/3) merged on 2026-10-23. Maintenance details and recorded validation follow below.
 - [PR #11 — Organize project context and AI development workflow](https://github.com/TVestly/powerlab/pull/11) merged on 2026-10-24, delivering Task 002 (Issue #5). It adds the roadmap, context recovery guide, reusable prompts, agent handoff rules, and lightweight issue/PR templates.
-- [PR #12 — Reconcile Task 002 status](https://github.com/TVestly/powerlab/pull/12) merged on 2026-10-24. Current main's [Checks run](https://github.com/TVestly/powerlab/actions/runs/40079311403) passed installation, formatting, type checking, tests, build, and audit; job/step results were inspected separately from local branch validation.
+- [PR #12 — Reconcile Task 002 status](https://github.com/TVestly/powerlab/pull/12) merged on 2026-10-24. That merge commit's [Checks run](https://github.com/TVestly/powerlab/actions/runs/40079311403) passed installation, formatting, type checking, tests, build, and audit.
+- [PR #13 — Cloudflare Pages setup and preview verification](https://github.com/TVestly/powerlab/pull/13) merged on 2026-10-25 at `3a4374b32dad5eec395a1fb35868f3fd064d48a2`. It adds hosting/review documentation and six hash-route regression tests without changing runtime application behavior, dependencies, or CI. The owner configured the Cloudflare Git integration; repository files alone did not create the hosting account connection.
 - The application contains the React/TypeScript/Vite foundation, dashboard/navigation, a theme toggle, and four **preview** modules: Three-Phase Systems, Transformers, Transmission Lines, Electric Machines.
 - Product, architecture, module, and engineering standards are documented. Automated UI/storage tests and a GitHub Actions checks workflow are present.
 
@@ -42,25 +43,27 @@ PR #11's recorded local validation on Node.js 24 passed **6 tests in 2 files**, 
 - Read clear notices that actual engineering calculators, simulations, and exercises are not yet implemented.
 - Open the [production application](https://powerlab-auj.pages.dev), confirmed by the owner on 2026-10-25, or run it locally using [README.md](README.md).
 
-## Task 003 — production connected; PR work remains proposed
+## Task 003 — merged implementation and deployment evidence
 
-[Issue #6](https://github.com/TVestly/powerlab/issues/6) approved free Cloudflare Pages with GitHub integration on 2026-10-24. This supersedes the old roadmap suggestion to evaluate GitHub Pages. The branch adds a beginner-friendly [setup and review guide](README.md#one-time-cloudflare-pages-setup-owner), production-versus-preview explanations, exact local fallback steps, and regression tests using the app's hash router. Application behavior, build configuration, dependencies, lockfile, and GitHub Actions workflow are preserved. No engineering calculations or numerical models are added.
+[Issue #6](https://github.com/TVestly/powerlab/issues/6) approved free Cloudflare Pages with GitHub integration on 2026-10-24. PR #13 integrated the [setup and review guide](README.md#one-time-cloudflare-pages-setup-owner), production-versus-preview explanations, local fallback steps, and hash-router regression tests. No engineering calculations or numerical models were added.
 
 The existing build already produces `dist/`, selects Node 24 via `.node-version`, and uses root assets with hash routes. No hosting code adjustment is justified by the local checks. Creating a Cloudflare Pages Git-connected project is an account action, not something a repository configuration file can authorize.
 
 ### Deployment evidence — 2026-10-25
 
-| Target                                       | URL / source commit                                                                                                                     | Verification                                                                                                                                                                                          |
-| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Production from accepted `main`              | [powerlab-auj.pages.dev](https://powerlab-auj.pages.dev); `44d9bdf8c588e12c35b9af0b84521475af8729c6`                                    | Owner confirmed the production URL and completed Git connection; Cloudflare's [check](https://github.com/TVestly/powerlab/runs/121107807625) independently confirms successful deployment of this SHA |
-| Preview of `chore/task-003-cloudflare-pages` | Deployment-specific URL and SHA will be reported in [PR #13](https://github.com/TVestly/powerlab/pull/13) when Cloudflare provides them | This documentation push requests a preview from the existing Git integration; do not substitute the production URL                                                                                    |
-| Local production build                       | `http://127.0.0.1:4173/#/`, when started locally                                                                                        | Local evidence only; not a public preview                                                                                                                                                             |
+| Target                          | URL / source commit                                                                                                    | Verification                                                                                                                                                                                                                                 |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Production from accepted `main` | [powerlab-auj.pages.dev](https://powerlab-auj.pages.dev); `3a4374b32dad5eec395a1fb35868f3fd064d48a2`                   | Cloudflare's [post-merge check](https://github.com/TVestly/powerlab/runs/121113601218) confirms successful deployment of the merged SHA; deployment-specific URL: [4cb3c358.powerlab-auj.pages.dev](https://4cb3c358.powerlab-auj.pages.dev) |
+| Historical PR #13 preview       | [6deda2a4.powerlab-auj.pages.dev](https://6deda2a4.powerlab-auj.pages.dev); `abbf78ba49fad8ca6474a14aec7ab92a4e86cdf9` | [Cloudflare check](https://github.com/TVestly/powerlab/runs/121111169963) confirms the pre-merge deployment; this is not the current production commit                                                                                       |
+| Local production build          | `http://127.0.0.1:4173/#/`, when started locally                                                                       | Local evidence only; not a public preview                                                                                                                                                                                                    |
 
-The owner completed the previously blocked account setup and reported production success on 2026-10-25. Cloudflare's GitHub check completed successfully at **08:31 Europe/Oslo** for accepted main `44d9bdf`, with deployment-specific address [e2c1a06d.powerlab-auj.pages.dev](https://e2c1a06d.powerlab-auj.pages.dev). That address belongs to the main deployment; although the check labels its link “Preview URL,” it is not PR #13's preview. The existing Pages project is `powerlab`; no duplicate project or alternative hosting service is needed.
+The owner completed setup and reported initial production success on 2026-10-25, then merged PR #13 at **09:00 Europe/Oslo**. The post-merge review confirmed GitHub's `merged` state and merge SHA against current main, then checked CI and Cloudflare independently. Cloudflare's generic “Preview URL” field on a main check is a deployment-specific main address, not a PR preview. The existing Pages project is `powerlab`; no duplicate project is needed.
+
+The [Checks run for merged main](https://github.com/TVestly/powerlab/actions/runs/40174958118) passed. Inspected job/step results confirm `npm ci`, `npm run format:check`, `npm run typecheck`, `npm test`, `npm run build`, and `npm run audit` all succeeded. These results belong to `3a4374b`, independently of PR #13's pre-merge checks.
 
 Independent hosted browser checks could not run: the environment's outbound proxy rejected the production URL with HTTP 403, and the web retrieval tool could not open it. This is an access limitation of the test environment, not evidence that the public site failed. The owner's confirmation and Cloudflare's successful check establish the recorded hosting state; no agent-run hosted desktop/mobile, signed-out access, or theme test is claimed. Dashboard settings have not been independently inspected. No credentials were requested or committed.
 
-### Branch verification — 2026-10-24
+### Pre-merge local verification — 2026-10-24
 
 Local validation on Node.js 24.19.0 with the lockfile's Vitest 4.1.12:
 
@@ -71,17 +74,17 @@ Local validation on Node.js 24.19.0 with the lockfile's Vitest 4.1.12:
 - Checked **47 relative documentation links/anchors** and reviewed task mappings and proposed-versus-merged claims.
 - Served `dist/` with `npm run preview -- --host 127.0.0.1 --port 4173 --strictPort`. Automated Chromium checks passed at **1440×1000** and **390×844**: dashboard, directory, four topic previews, copied links in new tabs, refresh, Back/Forward, return navigation, both themes persisting after reload, keyboard activation, and no horizontal overflow. All 33 observed responses per viewport were successful, including JS/CSS, with no page errors or failed requests. Inspected desktop dark and mobile light/dashboard/topic screenshots. The sandbox initially blocked the server/browser; the permitted rerun succeeded. This uses the environment's browser tooling, not a new project dependency or hosted test.
 
-These local results apply to the initial PR implementation, not a Cloudflare-hosted browser run. The 2026-10-25 follow-up changes documentation only, records the production evidence above, and pushes the existing branch to request a preview. Its local formatting check, 47 relative documentation links/anchors, and `git diff --check` passed; application tests/type checking/build/audit are left to the existing CI for this documentation-only follow-up. See [PR #13](https://github.com/TVestly/powerlab/pull/13) for the resulting preview URL/commit and checks on the pushed documentation commit. Hosted acceptance testing and owner preview review remain outstanding. Post-merge production verification cannot be performed before an approved merge. Task 003 is not complete.
+These local results apply to the initial implementation, not a Cloudflare-hosted browser run. PR #13 is merged and the merged commit's automated checks/deployment passed. At this review, signed-out hosted navigation, direct links/refresh/history, theme persistence, and desktop/mobile acceptance have no recorded post-merge results. Keep [Issue #6](https://github.com/TVestly/powerlab/issues/6) open until that evidence is recorded; the merge establishes owner approval to integrate, not proof that every browser check was performed.
 
 ## Still missing
 
 - Numerical engineering solvers, conductor designer, phasor activity, and interactive circuit simulations.
 - Project save/load functionality beyond theme preference.
-- Hosted PR-preview acceptance testing, owner merge approval, and post-merge production verification for Task 003.
+- Recorded hosted browser acceptance and post-merge production smoke-test results for Task 003.
 
 ## Next owner action
 
-Open [PR #13](https://github.com/TVestly/powerlab/pull/13), follow its Cloudflare preview link once available, confirm the deployed commit, and use [README's browser test plan](README.md#test-the-actual-app-before-merging). Setup does not need to be repeated. Keep Issue #6 open: after an owner-approved merge, independently verify production against the accepted `main` commit and reconcile these records and Issue #4. The separate interface review (#7) remains planned; it has not started.
+Record the post-merge [production](https://powerlab-auj.pages.dev) browser results in Issue #6 using [README's test plan](README.md#test-the-actual-app-before-merging). The next roadmap task is [Task 004 — interface review (#7)](https://github.com/TVestly/powerlab/issues/7), which remains planned and needs a separate request. Hosting is available; the outstanding blocker to Task 003 completion is verification evidence, not another deployment setup step.
 
 ## Decision rules
 
